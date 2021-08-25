@@ -12,6 +12,7 @@
     <link rel="stylesheet" id="main-stylesheet" data-version="1.1.0" href="~/styles/shards-dashboards.1.1.0.min.css">
     <link rel="stylesheet" href="~/styles/extras.1.1.0.min.css">
     <link href="~/lib/toastr.js/toastr.min.css" rel="stylesheet" />
+    <link href="~/lib/chartist/chartist.min.css" rel="stylesheet" />
     <script async defer src="~/scripts/buttons.js"></script>
 </head>
 <body class="h-100">
@@ -82,10 +83,11 @@
                         </a>
                     </nav>
                 </div>
-                <form action="#" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none">
+                <form id="myform2" asp-page="Detail" class="main-sidebar__search w-100 border-right d-sm-flex d-md-none d-lg-none" method="get">
                     <div class="input-group input-group-seamless ml-3">
-                        <input class="navbar-search form-control" type="text" placeholder="جستجو..." aria-label="Search">
+                        <input name="search" class="navbar-search form-control" type="text" placeholder="عبارت جستجو..." aria-label="Search">
                     </div>
+                    <a onclick="search2()" class="btn btn-outline-dark m-2">جستجو</a>
                 </form>
                 <div class="nav-wrapper">
                     <ul class="nav flex-column" id="nmenu">
@@ -122,14 +124,14 @@
                 <div class="main-navbar sticky-top bg-white">
                     <!-- Main Navbar -->
                     <nav class="navbar align-items-stretch navbar-light flex-md-nowrap p-0">
-                        <form action="#" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
+                        <form id="myform1" asp-page="Detail" method="get" class="main-navbar__search w-100 d-none d-md-flex d-lg-flex">
                             <div class="input-group input-group-seamless ml-3">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">
-                                        <i class="fas fa-search"></i>
+                                        <i onclick="search1()" class="fas fa-search"></i>
                                     </div>
                                 </div>
-                                <input class="navbar-search form-control" type="text" placeholder="جستجو..." aria-label="Search">
+                                <input name="search" class="navbar-search form-control" type="text" placeholder="جستجو..." aria-label="Search">
                             </div>
                         </form>
                         <ul class="navbar-nav border-left flex-row ">
@@ -219,7 +221,6 @@
     <script src="~/scripts/jquery-3.3.1.min.js"></script>
     <script src="~/scripts/popper.min.js"></script>
     <script src="~/scripts/bootstrap.min.js"></script>
-    <script src="~/scripts/Chart.min.js"></script>
     <script src="~/scripts/shards.min.js"></script>
     <script src="~/scripts/jquery.sharrre.min.js"></script>
     <script src="~/scripts/all.min.js"></script>
@@ -227,6 +228,17 @@
     <script src="~/scripts/shards-dashboards.1.1.0.min.js"></script>
     <script src="~/scripts/app/app-blog-overview.1.1.0.js"></script>
     <script src="~/lib/toastr.js/toastr.min.js"></script>
+    <script src="~/lib/chartist/chartist.min.js"></script>
+    <script src="~/lib/chartist/chartist.min.js"></script>
+    <script>
+        function search1() {
+            document.getElementById("myform1").submit();
+        }
+
+        function search2() {
+            document.getElementById("myform2").submit();
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
