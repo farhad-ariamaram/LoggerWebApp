@@ -115,6 +115,12 @@ namespace LoggerWebApp.Pages
 
         }
 
+        public IActionResult OnGetLogout()
+        {
+            HttpContext.Session.Remove("uid");
+            return Page();
+        }
+
         public class UserModel
         {
             [DisplayName("نام کاربری")]

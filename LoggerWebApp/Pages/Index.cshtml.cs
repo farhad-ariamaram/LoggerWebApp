@@ -36,11 +36,11 @@ namespace LoggerWebApp.Pages
 
             var ips = await _context.TblIlogDbIps.ToListAsync();
             IpsNumber = ips.Count();
-            SIpsNumber = ips.Where(a => a.FldIlogDbLogTypeId == 1).Count();
-            IIpsNumber = ips.Where(a => a.FldIlogDbLogTypeId == 2).Count();
+            SIpsNumber = ips.Where(a => a.FldIlogDbLogTypeId == 2).Count();
+            IIpsNumber = ips.Where(a => a.FldIlogDbLogTypeId == 1).Count();
             ErrorsNumber = await _context.TblIlogDbLogs.CountAsync();
-            SErrorsNumber = await _context.TblIlogDbLogs.Include(t=>t.FldIlogDbIp).Where(a => a.FldIlogDbIp.FldIlogDbLogTypeId == 1).CountAsync();
-            IErrorsNumber = await _context.TblIlogDbLogs.Where(a => a.FldIlogDbIp.FldIlogDbLogTypeId == 2).CountAsync();
+            SErrorsNumber = await _context.TblIlogDbLogs.Include(t=>t.FldIlogDbIp).Where(a => a.FldIlogDbIp.FldIlogDbLogTypeId == 2).CountAsync();
+            IErrorsNumber = await _context.TblIlogDbLogs.Where(a => a.FldIlogDbIp.FldIlogDbLogTypeId == 1).CountAsync();
 
             return Page();
         }
