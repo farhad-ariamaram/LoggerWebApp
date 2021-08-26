@@ -30,6 +30,7 @@ namespace LoggerWebApp
             });
             services.AddRazorPages();
             services.AddControllers();
+            services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -43,6 +44,8 @@ namespace LoggerWebApp
             {
                 app.UseExceptionHandler("/Error");
             }
+
+            app.UseSession();
 
             app.UseStaticFiles();
 
